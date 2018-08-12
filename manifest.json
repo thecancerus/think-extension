@@ -1,0 +1,13 @@
+{
+    "name": "Think!",
+    "version": "1.0",
+    "description": "Simplest way to setup your own collection of Wisdom ",
+	"chrome_url_overrides" : {
+		"newtab": "main.html"
+	},
+	"options_page":"options.html",
+	"content_security_policy": "script-src 'self' 'unsafe-eval' https://cdn.getawesomestudio.com; object-src 'self'",
+	"permissions": ["storage", "chrome://favicon/"],
+	"incognito": "split",
+    "manifest_version": 2
+  }

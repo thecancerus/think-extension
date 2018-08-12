@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      button {
+        height: 30px;
+        width: 30px;
+        outline: none;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-header">
+            <span class="app-logo"><a href="options.html" target="_self"><i class="fa">&nbsp;</i> New Tab Redirect Options</a></span>
+		<span class="webstore"><a href="https://chrome.google.com/webstore" target="_self" class="plain"><i class="fa" style="background:url('chrome://favicon/https://chrome.google.com/webstore/category/apps') no-repeat;"></i> <x data-role="store">Chrome Web Store</x></a></span>
+	</div>
+		<div class="container options-container">
+            <ul class="options-tabs">
+                <li ng-class="{'selected': selected === 'url'}"><a ng-click="selected='url'">URL</a></li>
+                <li ng-class="{'selected': selected === 'permissions'}"><a ng-click="selected='permissions'">Permissions</a></li>
+                <li ng-class="{'selected': selected === 'contact'}"><a ng-click="selected='contact'">Contact</a></li>
+                <li ng-class="{'selected': selected === 'donate'}"><a ng-click="selected='donate'">Donate</a></li>
+            </ul>
+			 <div class="target">
+                <div ng-show="selected=='url'">
+				 <input name="url" type="search" ng-model="url" placeholder="Default: New Tab Redirect 'Apps' Page" style="min-width:250px;" />
+                    <button style="font-weight:bold" title="Save" ng-click="save()">Save</button>
+                    <button title="Cancel" ng-click="cancel()">Cancel</button>
+                    <button title="One-time get Synced URL" ng-click="getSyncedUrl()" class="fa fa-cloud-download"></button>
+                    <p>
+                        <label>
+                            <input type="checkbox" ng-model="alwaysTabUpdate" ng-change="changeRedirect(alwaysTabUpdate)"> Always update tab, not redirect. <small>(Enable for cursor in the address bar)</small>
+                        </label>
+                    </p>
+				</div>
+			</div>
+			<div ng-show="selected=='permissions'">
+                    <h2>Permissions</h2>
+                    <p>
+                        For information regarding what these permissions mean, please research:
+                    </p>
+                    <ul>
+                        <li>
+                            <a href="http://developer.chrome.com/extensions/permission_warnings" target="_blank">Chrome extensions: permission warnings</a>
+                        </li>
+                        <li>
+                            <a href="https://support.google.com/chrome_webstore/answer/186213?hl=en" target="_blank">
+                                Chrome Web Store Help: Permissions requested by apps and extensions
+                            </a>
+                        </li>
+                    </ul>
+                    <p>
+                        If you have any doubts or questions, email me at james.schubert@gmail.com.
+                    </p>
+                    <p>
+                        Never enable permissions you don't trust or don't understand, it can be dangerous.
+                    </p>
+                    <h3>Required Permissions</h3>
+                    <ul>
+                        <li ng-repeat="req in required_permissions"><span ng-bind="req"></span></li>
+                    </ul>
+					<h3>Where these are used</h3>
+                    <p>
+                        The <em>required permissions</em> are used mostly by the options page.
+                    </p>
+                    <p>
+                        They allow the extension to display icons and save data either locally or to your Google Account (if you've enabled syncing in your browser and enabled extension syncing).
+                    </p>
+                    <p>
+                        The <em>optional permissions</em> are used by the custom new tab 'Apps' page.
+                    </p>
+					
+            </div>
+			 <div ng-show="selected=='contact'">
+
+                    <h2><span class="github-icon">Bugs or Features</span></h2>
+
+                    <p>
+                        Please post any new bugs or feature requests to github.
+                    </p>
+
+                   
+                    <p>
+                        Also, feel free to fork the code and contribute.
+                    </p>
+
+                    <h2><span class="twitter-icon">Twitter</span></h2>
+
+                    <p>I tweet sometimes from <a href="https://twitter.com/thecancerus">@thecancerus</a>. </p>
+
+                    <h2><span class="google-icon">Email</span></h2>
+
+                    <p>You're welcome to <a href="mailto:thecancerus@gmail.com">email me</a> .
+                    </p>
+
+                </div>
+				 <span class="clear"></span>
+				<div class="saved" ng-class="{'show-saved': show_saved }">
+					<div class="saved-container">Options saved!</div>
+				</div>
+      
+		</div>
+		<footer>
+    <div style="float:left;">
+        <p>
+            <a href="https://thecancerus.com">&copy; Amit Singh, 2018</a>
+            &nbsp;|&nbsp;
+            <a href="https://github.com/thecancerus/think-extension" target="_blank">Report bugs</a>
+       
+        </p>
+    </div>
+</footer>
+  </body>
+  <script src="js/options.js"></script>
+</html>
